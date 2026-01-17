@@ -5,15 +5,15 @@ import { h } from 'vue'
 </script>
 
 <template>  
-  <div class="p-11.75 bg-[#0E1212] border border-white/10 rounded-2xl mt-4 mb-8">
-    <div class="px-[3.7813rem] flex flex-col items-stretch ">
-      <div class="w-97.25 space-y-7.5 ">
-        <h1 class="text-[2.5rem] text-center">Welcome Back  👋</h1>
+  <div class="p-5 md:p-11.75 bg-[#0E1212] border border-white/10 rounded-2xl mt-4 mb-8 w-full sm:w-auto">
+    <div class="sm:px-[3.7813rem] flex flex-col items-center ">
+      <div class="sm:w-97.25 space-y-5 sm:space-y-7.5">
+        <h1 class="text-3xl sm:text-[2.5rem] text-center">Welcome <br class="block sm:hidden" /> Back  👋</h1>
         <div class="flex items-center gap-2.5 relative p-2.75 bg-[#99E39E]/10 rounded-xl w-full">
           <Button size="lg" rounded="xl" class="text-2xl font-semibold">
             $15
           </Button>
-          <p class="text-lg font-medium">
+          <p class="sm:text-lg text-base font-medium z-10">
             Приветственный <br/> бонус за регистрацию
           </p>
           <svg class="absolute right-0 bottom-0" width="82" height="70" viewBox="0 0 82 70" fill="none" xmlns="http://www.w3.org/2000/svg">
