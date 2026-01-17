@@ -1,31 +1,21 @@
 <script setup lang="ts">
 import { computed, type Component } from 'vue'
+import type { Props, ButtonVariant, ButtonSize, ButtonRounded } from './model/type'
 
-type ButtonVariant = 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive'
-type ButtonSize = 'default' | 'sm' | 'lg' | 'icon'
-
-interface Props {
-  variant?: ButtonVariant
-  size?: ButtonSize
-  disabled?: boolean
-  loading?: boolean
-  prependIcon?: Component | string
-  as?: string
-  type?: 'button' | 'submit' | 'reset'
-}
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'default',
   size: 'default',
   disabled: false,
   loading: false,
+  rounded: 'md',
   prependIcon: undefined,
   as: 'button',
   type: 'button',
 })
 
 const buttonClasses = computed(() => {
-  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'
+  const baseClasses = 'inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'
   
   const variantClasses: Record<ButtonVariant, string> = {
     default: 'bg-[#99E39E] text-black hover:bg-[#99E39E]/90',
@@ -37,15 +27,25 @@ const buttonClasses = computed(() => {
   
   const sizeClasses: Record<ButtonSize, string> = {
     default: 'h-10 px-4 py-2',
-    sm: 'h-9 rounded-md px-3',
-    lg: 'h-11 rounded-md px-8',
+    sm: 'h-9 px-3',
+    lg: 'h-11 px-6',
     icon: 'h-10 w-10',
+  }
+
+  const roundedClasses: Record<ButtonRounded, string> = {
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    xl: 'rounded-xl',
+    '2xl': 'rounded-2xl',
+    '3xl': 'rounded-3xl',
+    full: 'rounded-full',
   }
   
   return [
     baseClasses,
     variantClasses[props.variant],
     sizeClasses[props.size],
+    roundedClasses[props.rounded],
   ].join(' ')
 })
 </script>

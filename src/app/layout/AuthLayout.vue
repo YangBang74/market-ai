@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { h } from 'vue'
-import { Logo, Button } from '@/shared/ui'
+import { Logo, Button, LangSelect } from '@/shared/ui'
 import Icons from '@/shared/ui/Icons.vue'
 
 const routes = [
@@ -26,9 +26,10 @@ const routes = [
       <nav class="flex items-center gap-5 font-semibold uppercase">
         <router-link v-for="value in routes" :key="value.path" :to="value.path">{{ value.name }}</router-link>
       </nav>
-      <Button 
+      <div class="flex items-center gap-5">
+        <Button 
         type="button" 
-        size="default" 
+        size="lg" 
         variant="default" 
         :disabled="false" 
         :loading="false" 
@@ -36,6 +37,9 @@ const routes = [
       >
       Start Now
       </Button>
+        <LangSelect />
+      </div>
+
     </header> 
     <router-view />
   </div>
