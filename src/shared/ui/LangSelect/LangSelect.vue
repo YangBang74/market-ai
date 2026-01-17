@@ -34,7 +34,7 @@ const changeLocale = (locale: string) => {
         class="flex items-center gap-3 px-2.25 py-3.25 text-sm rounded-xl bg-white/10 cursor-pointer"
         @click.stop.prevent="toggleLangDropdown()"
       >
-        <img :src="uk" alt="uk"  />
+        <img :src="uk" alt="uk" class="md:inline-block hidden"  />
         {{ currentLocaleLabel }}
         <Icons name="arrow-down" :size="10" />
       </button>

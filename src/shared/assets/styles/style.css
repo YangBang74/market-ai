@@ -6,3 +6,7 @@ body {
   color: #ffffff;
   font-family: 'DM Sans', sans-serif;
 }
+
+a, button {
+  cursor: pointer;
+}

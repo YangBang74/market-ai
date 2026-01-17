@@ -19,7 +19,7 @@ const buttonClasses = computed(() => {
   
   const variantClasses: Record<ButtonVariant, string> = {
     default: 'bg-[#99E39E] text-black hover:bg-[#99E39E]/90',
-    secondary: 'bg-[#0E1212] text-white border border-white/10 hover:bg-[#0E1212]/80',
+    secondary: 'bg-[#029DCB] text-black border border-white/10 hover:bg-[#029DCB]/80',
     outline: 'border border-white/20 bg-transparent hover:bg-white/10',
     ghost: 'hover:bg-white/10',
     destructive: 'bg-red-500 text-white hover:bg-red-600',
@@ -35,6 +35,7 @@ const buttonClasses = computed(() => {
   const roundedClasses: Record<ButtonRounded, string> = {
     sm: 'rounded-sm',
     md: 'rounded-md',
+    lg: 'rounded-lg',
     xl: 'rounded-xl',
     '2xl': 'rounded-2xl',
     '3xl': 'rounded-3xl',

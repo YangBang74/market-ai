@@ -26,7 +26,7 @@ const toggleMobileMenu = () => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-start h-screen auth-bg px-5">
+  <div class="flex flex-col items-center justify-start h-full auth-bg px-5">
     <header class="relative flex items-center justify-between my-2 md:my-5 w-full mx-4 md:mx-auto p-3 lg:p-4 max-w-full md:max-w-227.75 bg-[#0E1212] border border-white/10 rounded-xl md:rounded-2xl py-4 lg:py-6.5 px-4 lg:px-11.75">
       <Logo />
       
@@ -114,12 +114,15 @@ const toggleMobileMenu = () => {
         </nav>
       </div>
     </header> 
-    <router-view />
+    <router-view class="flex-1"/>
   </div>
 </template>
 
-<style scoped>
-.auth-bg {
-  background: url('@/shared/assets/images/auth-bg.png') fixed center center / cover no-repeat;
+<style>
+body {
+  background-image: url('@/shared/assets/images/auth-bg.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>
