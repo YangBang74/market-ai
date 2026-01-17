@@ -33,9 +33,10 @@ const routes = [
         variant="default" 
         :disabled="false" 
         :loading="false" 
+        class="gap-2"
         :prepend-icon="h(Icons, { name: 'arrow-right'})"
       >
-      Start Now
+       Start Now
       </Button>
         <LangSelect />
       </div>
