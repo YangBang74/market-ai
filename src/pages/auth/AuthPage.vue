@@ -1,7 +1,7 @@
+<script setup lang="ts"></script>
+
 <template>
-  <div>
-    <h1>Auth Page</h1>
+  <div class="p-11.75 bg-[#0E1212]">
+    
   </div>
 </template>
-
-<script setup lang="ts"></script>
