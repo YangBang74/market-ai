@@ -64,8 +64,9 @@ onUnmounted(() => {
           <LangSwitcher />
         </div>
       </div>
-
-      <router-view />
+      <div class="px-5.5 lg:pb-8.75 pb-3.5">        
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
