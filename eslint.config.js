@@ -1,8 +1,12 @@
 import pluginVue from 'eslint-plugin-vue';
+import prettierConfig from 'eslint-config-prettier';
 
 export default [
   // Базовые рекомендации для JS
   ...pluginVue.configs['flat/recommended'],
+  
+  // Отключаем правила, конфликтующие с Prettier
+  prettierConfig,
   
   {
     files: ['*.vue', '**/*.vue'],

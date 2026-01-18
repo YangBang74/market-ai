@@ -1,2 +1,5 @@
 export { default as AuthPage } from './auth/AuthPage.vue'
 export { default as HomePage } from './home/HomePage.vue'
+export { default as BalancePage } from './balance/BalancePage.vue'
+export { default as FriendsPage } from './friends/FriendsPage.vue'
+export { default as TasksPage } from './tasks/TasksPage.vue'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, h, onMounted, onUnmounted } from 'vue'
+import { ref, h } from 'vue'
 import { Logo, Button, LangSelect } from '@/shared/ui'
 import Icons from '@/shared/ui/Icons.vue'
 
@@ -24,13 +24,6 @@ const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 
-onMounted(() => {
-  document.body.classList.add('auth-layout-active')
-})
-
-onUnmounted(() => {
-  document.body.classList.remove('auth-layout-active')
-})
 </script>
 
 <template>
@@ -125,9 +118,3 @@ onUnmounted(() => {
     <router-view class="flex-1"/>
   </div>
 </template>
-
-<style>
-body.auth-layout-active {
-  @apply bg-[url('@/shared/assets/images/auth-bg.png')] bg-fixed bg-center bg-cover bg-no-repeat;
-}
-</style>
