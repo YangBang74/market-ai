@@ -9,10 +9,10 @@ const routes = [
     path: '/',
     component: DefaultLayout,
     children: [
-      { path: '', component: HomePage },
-      { path: 'balance', component: BalancePage },
-      { path: 'friends', component: FriendsPage },
-      { path: 'tasks', component: TasksPage },
+      { path: '', component: HomePage, meta: { title: 'Дашбоард' } },
+      { path: 'balance', component: BalancePage, meta: { title: 'Баланс' } },
+      { path: 'friends', component: FriendsPage, meta: { title: 'Друзья' } },
+      { path: 'tasks', component: TasksPage, meta: { title: 'Задания' } },
     ],
 
   },
