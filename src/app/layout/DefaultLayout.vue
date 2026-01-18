@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Sidebar } from '@/widgets'
-import { Icons, Button, LangSwitcher } from '@/shared/ui'
+import { Icons, LangSwitcher } from '@/shared/ui'
 import { usePageTitle } from '@/features/get-page-title'
 
 const isMobileMenuOpen = ref(false)
