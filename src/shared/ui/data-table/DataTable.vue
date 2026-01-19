@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { ref, computed } from 'vue'
-import type { Props, Column, SortDirection } from './model/type'
-import { Button } from '@/shared/ui'
+import type { Props, SortDirection } from './model/type'
 import Icons from '@/shared/ui/Icons.vue'
 import { h } from 'vue'
 
