@@ -20,7 +20,7 @@ const buttonClasses = computed(() => {
   const variantClasses: Record<ButtonVariant, string> = {
     default: 'bg-[#99E39E] text-black hover:bg-[#99E39E]/90',
     secondary: 'bg-[#029DCB] text-black border border-white/10 hover:bg-[#029DCB]/80',
-    outline: 'border border-white/20 bg-transparent hover:bg-white/10',
+    outline: 'border border-white/30 bg-transparent text-white/70 hover:bg-white/10',
     ghost: 'hover:bg-white/10',
     destructive: 'bg-red-500 text-white hover:bg-red-600',
   }

@@ -60,7 +60,7 @@ const routes = [
 
   <!-- Сайдбар -->
   <aside
-    class="fixed lg:static top-0 left-0 min-h-screen h-full w-60.25 bg-[#0E1212] border-r border-white/10 py-5 px-4 space-y-4 z-50 transition-transform duration-300 ease-in-out lg:translate-x-0"
+    class="sticky! lg:static top-0 left-0 min-h-screen h-full w-60.25 bg-[#0E1212] border-r border-white/10 py-5 px-4 space-y-4 z-50 transition-transform duration-300 ease-in-out lg:translate-x-0"
     :class="{
       '-translate-x-full': !isOpen,
       'translate-x-0': isOpen,
