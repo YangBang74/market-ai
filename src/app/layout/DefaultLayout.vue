@@ -33,7 +33,7 @@ onUnmounted(() => {
 <template>
   <div class="flex min-h-screen">
     <Sidebar :is-open="isMobileMenuOpen" @close="closeSidebar" />
-    <main class="flex-1 relative">
+    <main class="flex-1 relative lg:pl-60.25">
       <div class="flex items-center justify-between px-5.5 lg:py-8.75 py-3.5 lg:pl-5.5 pl-16">
         <div class="flex items-center gap-2">
           <button
@@ -64,7 +64,7 @@ onUnmounted(() => {
           <LangSwitcher />
         </div>
       </div>
-      <div class="px-5.5 lg:pb-8.75 pb-3.5">        
+      <div class="px-5.5 lg:pb-8.75 pb-3.5 ">        
         <router-view />
       </div>
     </main>
