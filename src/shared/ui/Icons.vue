@@ -89,6 +89,12 @@ const props = defineProps<{
     <path d="M0.399088 5.7334L5.73242 0.400065" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M5.73242 5.42834V0.400061H0.704138" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
+  <svg v-if="name === 'arrow-left'" width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0.216797 7.2959L8.73828 0.59082V3.94434L13 0.59082V14L8.73828 10.6475V14L0.216797 7.2959Z" fill="currentColor"/>
+  </svg>
+  <svg v-if="name === 'calendar'" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6.66667 1.66667V4.16667M13.3333 1.66667V4.16667M2.91667 7.575H17.0833M4.16667 3.33333H15.8333C16.7538 3.33333 17.5 4.07952 17.5 5V16.6667C17.5 17.5871 16.7538 18.3333 15.8333 18.3333H4.16667C3.24619 18.3333 2.5 17.5871 2.5 16.6667V5C2.5 4.07952 3.24619 3.33333 4.16667 3.33333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
 
 </template>
 
