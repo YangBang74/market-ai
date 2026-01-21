@@ -34,7 +34,7 @@ onUnmounted(() => {
   <div class="flex min-h-screen">
     <Sidebar :is-open="isMobileMenuOpen" @close="closeSidebar" />
     <main class="flex-1 relative lg:pl-60.25">
-      <div class="flex items-center justify-between px-5.5 lg:py-8.75 py-3.5 lg:pl-5.5">
+      <div class="bg-[#0E1212] m-4.5 border border-white/10 rounded-xl md:rounded-2xl flex items-center justify-between px-5.5 py-3.5">
         <div class="flex items-center gap-2">
           <h1 class="text-[2rem] font-medium">
             {{ pageTitle }}
@@ -55,28 +55,17 @@ onUnmounted(() => {
           </router-link>
           <LangSelect />
           <button
-            v-if="!isMobileMenuOpen"
             @click="toggleSidebar"
-            class="p-2 rounded-md hover:bg-white/10 transition-colors"
+            class="p-2 rounded-md hover:bg-white/10 transition-colors md:hidden"
             aria-label="Toggle menu"
           >
             <svg 
-              v-if="!isMobileMenuOpen"
               class="w-6 h-6" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
             >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg 
-              v-else
-              class="w-6 h-6" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
