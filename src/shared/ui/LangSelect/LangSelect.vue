@@ -44,7 +44,7 @@ const changeLocale = (locale: string) => {
     <div class="relative">
       <button
         type="button"
-        class="flex items-center gap-3 px-2.25 py-3.25 text-sm rounded-xl bg-white/10 cursor-pointer"
+        class="flex items-center gap-3 px-2.25 py-3.25 text-sm rounded-xl bg-[#262a2a] cursor-pointer"
         @click.stop.prevent="toggleLangDropdown()"
       >
         <img
@@ -64,11 +64,10 @@ const changeLocale = (locale: string) => {
           v-for="locale in locales"
           :key="locale"
           type="button"
-          class="flex w-full items-center justify-between px-3 py-1.5 hover:bg-white/5"
-          :class="{
-            'text-white': currentLocale === locale,
-            'text-white/80': currentLocale !== locale,
-          }"
+          class="flex w-full items-center justify-between px-3 py-1.5 transition-colors"
+          :class="currentLocale === locale
+            ? 'bg-[#99E39E]/10 text-[#99E39E]'
+            : 'text-white/80 hover:bg-white/5'"
           @click="changeLocale(locale)"
         >
           <span class="flex items-center gap-2">
@@ -79,7 +78,6 @@ const changeLocale = (locale: string) => {
             />
             <span>{{ locale.toUpperCase() }}</span>
           </span>
-          <span v-if="currentLocale === locale" class="w-1.5 h-1.5 rounded-full bg-[#99E39E]" />
         </button>
       </div>
     </div>
