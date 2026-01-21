@@ -66,27 +66,10 @@ const toggleMobileMenu = () => {
         <LangSelect />
         <button
           @click="toggleMobileMenu"
-          class="p-2 rounded-md hover:bg-white/10 transition-colors"
-          aria-label="Toggle menu"
-        >
-          <svg 
-            v-if="!isMobileMenuOpen"
-            class="w-6 h-6" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
+          class="lg:hidden z-60 h-12 w-12 bg-[#0E1212] border border-white/10 rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center"
+            aria-label="Открыть меню"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg 
-            v-else
-            class="w-6 h-6" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+            <Icons name="menu" :size="24" />
         </button>
       </div>
 
