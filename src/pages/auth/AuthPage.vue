@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { Button, Input } from '@/shared/ui'
 import Icons from '@/shared/ui/Icons.vue'
-import { h } from 'vue'
+import { ref, h } from 'vue'
+
+const email = ref('')
+const password = ref('')
 </script>
 
 <template>  
@@ -26,11 +29,11 @@ import { h } from 'vue'
         <div class="space-y-6">
           <div class="">
             <label for="email" class="mb-2 inline-block">Email</label>
-            <Input type="email" id="email" rounded="lg" placeholder="Email" :prependIcon="h(Icons, { name: 'mail' })" />
+            <Input type="email" id="email" v-model="email" rounded="lg" placeholder="Email" :prependIcon="h(Icons, { name: 'mail' })" />
           </div>
           <div class="">
             <label for="password" class="mb-2 inline-block">Password</label>
-            <Input type="password" id="password" rounded="lg" placeholder="Password" :prependIcon="h(Icons, { name: 'lock' })" />
+            <Input type="password" id="password" v-model="password" rounded="lg" placeholder="Password" :prependIcon="h(Icons, { name: 'lock' })" />
           </div>
           <div class="flex justify-end"> 
             <button class="flex justify-end underline">Forgot password?</button>
