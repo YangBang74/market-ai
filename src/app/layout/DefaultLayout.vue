@@ -34,12 +34,30 @@ onUnmounted(() => {
   <div class="flex min-h-screen">
     <Sidebar :is-open="isMobileMenuOpen" @close="closeSidebar" />
     <main class="flex-1 relative lg:pl-60.25">
-      <div class="flex items-center justify-between px-5.5 lg:py-8.75 py-3.5 lg:pl-5.5 pl-16">
+      <div class="flex items-center justify-between px-5.5 lg:py-8.75 py-3.5 lg:pl-5.5">
         <div class="flex items-center gap-2">
+          <h1 class="text-[2rem] font-medium">
+            {{ pageTitle }}
+          </h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <router-link
+            to="/notifications"
+            class="relative inline-flex items-center justify-center"
+          >
+              <Icons name="bell" :size="20" />
+              <span
+                v-if="notificationCount > 0"
+                class="absolute -top-0.75 -right-1.5 flex h-3.75 w-3.75 items-center justify-center rounded-full bg-[#99E39E] text-[7px] font-semibold text-black"
+              >
+                {{ notificationCount > 999 ? '999+' : notificationCount }}
+              </span>
+          </router-link>
+          <LangSelect />
           <button
             v-if="!isMobileMenuOpen"
             @click="toggleSidebar"
-            class="absolute left-4 p-2 rounded-md hover:bg-white/10 transition-colors"
+            class="p-2 rounded-md hover:bg-white/10 transition-colors"
             aria-label="Toggle menu"
           >
             <svg 
@@ -61,25 +79,8 @@ onUnmounted(() => {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <h1 class="text-[2rem] font-medium">
-            {{ pageTitle }}
-          </h1>
         </div>
-        <div class="flex items-center gap-4">
-          <router-link
-            to="/notifications"
-            class="relative inline-flex items-center justify-center"
-          >
-              <Icons name="bell" :size="20" />
-              <span
-                v-if="notificationCount > 0"
-                class="absolute -top-0.75 -right-1.5 flex h-3.75 w-3.75 items-center justify-center rounded-full bg-[#99E39E] text-[7px] font-semibold text-black"
-              >
-                {{ notificationCount > 999 ? '999+' : notificationCount }}
-              </span>
-          </router-link>
-          <LangSelect />
-        </div>
+
       </div>
       <div class="px-5.5 lg:pb-8.75 pb-3.5 ">        
         <router-view />
