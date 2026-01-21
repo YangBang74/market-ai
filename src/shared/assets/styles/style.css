@@ -5,11 +5,12 @@ html, body {
   color: #ffffff;
   font-family: 'DM Sans', sans-serif;
   background-image: 
+    linear-gradient(#000304BA, #000304B3),
     url('@/shared/assets/images/auth-bg.png');
   background-size: cover;
-  background-position: fixed;
-  height: 100%;
-  background-repeat: no-repeat;
+  @apply bg-fixed;
+  @apply h-full;
+  @apply bg-no-repeat;
 }
 
 a, button {
