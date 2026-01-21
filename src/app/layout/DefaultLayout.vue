@@ -56,7 +56,7 @@ onUnmounted(() => {
           <LangSelect />
           <button
             @click="toggleSidebar"
-            class="p-2 rounded-md hover:bg-white/10 transition-colors md:hidden"
+            class="p-2 rounded-md hover:bg-white/10 transition-colors lg:hidden"
             aria-label="Toggle menu"
           >
             <svg 
