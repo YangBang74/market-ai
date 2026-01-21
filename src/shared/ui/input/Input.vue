@@ -41,29 +41,35 @@ const inputType = computed(() => {
 })
 
 const togglePasswordVisibility = async (event: MouseEvent) => {
+  // Важно: предотвращаем стандартное поведение и всплытие
   event.preventDefault()
   event.stopPropagation()
 
-  // Save caret/selection to prevent cursor jumping to start after type switch
   const el = inputRef.value
-  const start = el?.selectionStart ?? null
-  const end = el?.selectionEnd ?? null
+  if (!el) return
 
+  // 1. Запоминаем текущую позицию курсора до смены типа
+  const selectionStart = el.selectionStart
+  const selectionEnd = el.selectionEnd
+
+  // 2. Меняем состояние видимости
   showPassword.value = !showPassword.value
 
+  // 3. Ждем обновления DOM
   await nextTick()
 
-  // Restore focus + selection
-  if (inputRef.value) {
-    inputRef.value.focus()
-    if (start !== null && end !== null) {
-      try {
-        inputRef.value.setSelectionRange(start, end)
-      } catch {
-        // Some browsers may block selection for certain input types; ignore.
-      }
+  // 4. Возвращаем фокус и позицию курсора
+  el.focus()
+  
+  // Chrome иногда требует микро-задержку для корректной установки курсора
+  // после смены типа input
+  requestAnimationFrame(() => {
+    try {
+      el.setSelectionRange(selectionStart, selectionEnd)
+    } catch (e) {
+      // Для некоторых типов input setSelectionRange может выдать ошибку
     }
-  }
+  })
 }
 
 // Expose focus method for parent components
