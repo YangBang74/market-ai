@@ -30,7 +30,7 @@ const toggleMobileMenu = () => {
   <div class="flex flex-col items-center justify-start h-full auth-bg px-5">
     <header class="relative flex items-center justify-between my-2 md:my-5 w-full mx-4 md:mx-auto p-3 lg:p-4 max-w-full md:max-w-227.75 bg-[#0E1212] border border-white/10 rounded-xl md:rounded-2xl py-4 lg:py-6.5 px-4 lg:px-11.75">
       <router-link to="/">
-        <Logo />
+        <Logo :show-text="false" />
       </router-link>
       
       <!-- Desktop Navigation -->

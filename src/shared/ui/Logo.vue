@@ -1,3 +1,9 @@
+<script setup lang="ts">
+withDefaults(defineProps<{ showText?: boolean }>(), {
+  showText: true,
+})
+</script>
+
 <template>
   <div class="flex items-center gap-2.5">
     <svg width="27" height="33" viewBox="0 0 27 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,7 +17,7 @@
       <path d="M9.20067 15.2371V11.1766H5.93359V17.6255C6.84221 16.6284 7.95218 15.8121 9.20067 15.2381V15.2371Z" fill="white"/>
       <path d="M13.5004 33C8.55857 33 4.53711 29.0645 4.53711 24.2262C4.53711 19.3879 8.55759 15.4524 13.5004 15.4524C18.4433 15.4524 22.4638 19.3879 22.4638 24.2262C22.4638 29.0645 18.4433 33 13.5004 33ZM13.5004 18.3379C10.1833 18.3379 7.48396 20.9792 7.48396 24.2271C7.48396 27.4751 10.1823 30.1164 13.5004 30.1164C16.8186 30.1164 19.5169 27.4751 19.5169 24.2271C19.5169 20.9792 16.8186 18.3379 13.5004 18.3379Z" fill="#99E39E"/>
     </svg>
-    <span class="text-3xl font-medium text-[#99E39E] md:inline hidden">
+    <span :class="{ 'md:inline hidden': !showText }" class="text-3xl font-medium text-[#99E39E]">
       <b class="text-white">AI</b>market
     </span>
   </div>

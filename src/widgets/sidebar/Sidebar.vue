@@ -66,7 +66,7 @@ const routes = [
       'translate-x-0': isOpen,
     }"
   >
-    <Logo />
+    <Logo :show-text="true" />
 
     <router-link
       to="/profile"

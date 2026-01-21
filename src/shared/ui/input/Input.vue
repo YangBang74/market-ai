@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, h } from 'vue'
+import { ref, computed, h, nextTick } from 'vue'
 import type { Props, InputVariant, InputSize, InputRounded } from './model/type'
 import Icons from '@/shared/ui/Icons.vue'
 
@@ -40,14 +40,30 @@ const inputType = computed(() => {
   return props.type
 })
 
-const togglePasswordVisibility = (event: MouseEvent) => {
+const togglePasswordVisibility = async (event: MouseEvent) => {
   event.preventDefault()
   event.stopPropagation()
+
+  // Save caret/selection to prevent cursor jumping to start after type switch
+  const el = inputRef.value
+  const start = el?.selectionStart ?? null
+  const end = el?.selectionEnd ?? null
+
   showPassword.value = !showPassword.value
-  // Сохраняем фокус на input после переключения
-  setTimeout(() => {
-    inputRef.value?.focus()
-  }, 0)
+
+  await nextTick()
+
+  // Restore focus + selection
+  if (inputRef.value) {
+    inputRef.value.focus()
+    if (start !== null && end !== null) {
+      try {
+        inputRef.value.setSelectionRange(start, end)
+      } catch {
+        // Some browsers may block selection for certain input types; ignore.
+      }
+    }
+  }
 }
 
 // Expose focus method for parent components
