@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Sidebar } from '@/widgets'
-import { Icons, LangSwitcher } from '@/shared/ui'
+import { Icons, LangSelect } from '@/shared/ui'
 import { usePageTitle } from '@/features/get-page-title'
 
 const isMobileMenuOpen = ref(false)
@@ -61,7 +61,7 @@ onUnmounted(() => {
                 {{ notificationCount > 999 ? '999+' : notificationCount }}
               </span>
           </router-link>
-          <LangSwitcher />
+          <LangSelect />
         </div>
       </div>
       <div class="px-5.5 lg:pb-8.75 pb-3.5 ">        
