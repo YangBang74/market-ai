@@ -36,7 +36,7 @@ onUnmounted(() => {
     <main class="flex-1 relative lg:pl-60.25">
       <div class="bg-[#0E1212] m-4.5 border border-white/10 rounded-xl md:rounded-2xl flex items-center justify-between px-5.5 py-3.5">
         <div class="flex items-center gap-2">
-          <h1 class="text-[2rem] font-medium">
+          <h1 class="sm:text-[2rem] text-2xl font-medium">
             {{ pageTitle }}
           </h1>
         </div>

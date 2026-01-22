@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch, onUnmounted } from 'vue'
 import { Logo, Icons } from '@/shared/ui'
 import { useRoute } from 'vue-router'
 
@@ -11,6 +12,27 @@ const emit = defineEmits<{
 }>()
 
 const route = useRoute()
+
+// Блокировка скролла страницы при открытом сайдбаре на мобильных
+watch(() => props.isOpen, (isOpen) => {
+  if (typeof window !== 'undefined') {
+    const isMobile = window.innerWidth < 1024 // lg breakpoint
+    if (isMobile) {
+      if (isOpen) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    }
+  }
+})
+
+// Очистка при размонтировании компонента
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    document.body.style.overflow = ''
+  }
+})
 
 const isActive = (path: string) => {
   const currentPath = route.path
@@ -60,7 +82,7 @@ const routes = [
 
   <!-- Сайдбар -->
   <aside
-    class="fixed! lg:sticky top-0 left-0 min-h-screen h-full w-60.25 bg-[#0E1212] border-r border-white/10 py-5 px-4 space-y-4 z-50 transition-transform duration-300 ease-in-out lg:translate-x-0"
+    class="fixed! lg:sticky top-0 left-0 min-h-screen h-full w-60.25 bg-[#0E1212] border-r border-white/10 py-5 px-4 flex flex-col z-50 transition-transform duration-300 ease-in-out lg:translate-x-0"
     :class="{
       '-translate-x-full': !isOpen,
       'translate-x-0': isOpen,
@@ -70,7 +92,7 @@ const routes = [
 
     <router-link
       to="/profile"
-      class="flex items-center gap-2"
+      class="flex items-center gap-2 mt-4"
       @click="closeMobileMenu"
     >
       <img
@@ -79,46 +101,48 @@ const routes = [
       />
       <span class="text-sm"> @User1234123 </span>
     </router-link>
-    <div class="bg-[#9A999A]/20 h-px w-full" />
-    <nav class="space-y-4">
+    <div class="bg-[#9A999A]/20 h-px w-full mt-4" />
+    <div class="flex-1 overflow-y-auto space-y-4 mt-4">
+      <nav class="space-y-4">
+        <router-link
+          v-for="route in routes"
+          :key="route.path"
+          :to="route.path"
+          class="transition-all flex items-center gap-2.5 py-1.75 text-white/60 text-sm"
+          :class="{
+            'text-white! bg-[#99E39E]/10 rounded-lg py-2.5 pr-2': isActive(route.path),
+          }"
+          @click="closeMobileMenu"
+        >
+          <div
+            v-if="isActive(route.path)"
+            class="w-1 h-5 bg-[#99E39E] rounded-lg"
+          />
+          <Icons :name="route.icon" :size="15" />
+          <span class="text-sm">{{ route.name }}</span>
+        </router-link>
+      </nav>
+      <div class="bg-[#9A999A]/20 h-px w-full" />
       <router-link
-        v-for="route in routes"
-        :key="route.path"
-        :to="route.path"
-        class="transition-all flex items-center gap-2.5 py-1.75 text-white/60 text-sm"
+        to="/settings"
+        class="flex items-center gap-2.5 py-1.75 text-white/60 text-sm"
         :class="{
-          'text-white! bg-[#99E39E]/10 rounded-lg py-2.5 pr-2': isActive(route.path),
+          'text-white! bg-[#99E39E]/10 rounded-lg py-2.5 pr-2': isActive('/settings'),
         }"
         @click="closeMobileMenu"
       >
-        <div
-          v-if="isActive(route.path)"
-          class="w-1 h-5 bg-[#99E39E] rounded-lg"
-        />
-        <Icons :name="route.icon" :size="15" />
-        <span class="text-sm">{{ route.name }}</span>
+        <Icons name="settings" :size="15" />
+        <span class="text-sm">Настройки</span>
       </router-link>
-    </nav>
-    <div class="bg-[#9A999A]/20 h-px w-full" />
-    <router-link
-      to="/settings"
-      class="flex items-center gap-2.5 py-1.75 text-white/60 text-sm"
-      :class="{
-        'text-white! bg-[#99E39E]/10 rounded-lg py-2.5 pr-2': isActive('/settings'),
-      }"
-      @click="closeMobileMenu"
-    >
-      <Icons name="settings" :size="15" />
-      <span class="text-sm">Настройки</span>
-    </router-link>
-    <div class="bg-[#9A999A]/20 h-px w-full" />
-    <button
-      class="flex items-center gap-2.5 py-1.75 text-white/60 text-sm"
-      @click="closeMobileMenu"
-    >
-      <Icons name="logout" :size="15" />
-      <span class="text-sm">Выйти из профиля</span>
-    </button>
+      <div class="bg-[#9A999A]/20 h-px w-full" />
+      <button
+        class="flex items-center gap-2.5 py-1.75 text-white/60 text-sm"
+        @click="closeMobileMenu"
+      >
+        <Icons name="logout" :size="15" />
+        <span class="text-sm">Выйти из профиля</span>
+      </button>
+    </div>
   </aside>
 </template>
 
