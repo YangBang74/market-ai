@@ -77,77 +77,73 @@ const columns: Column<TradeData>[] = [
 ]
 </script>
 <template>
-  <div class="space-y-5">
-        
-  <div class="grid md:grid-cols-12 grid-cols-1 gap-5">
-    <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
-      <div class="flex xl:items-center items-start justify-between xl:flex-row flex-col gap-2">
-        <div class="flex items-center gap-1.5">
-          <p class="text-2xl font-semibold text-white">
-            $240.8K
-          </p>
-          <BadgeStats :sum="26.5" />
+  <div class="space-y-5">          
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+      <div class="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
+        <div class="flex items-center justify-between flex-row  gap-2">
+          <div class="flex items-center gap-1.5">
+            <p class="text-2xl font-semibold text-white">
+              $240.8K
+            </p>
+            <BadgeStats :sum="26.5" />
+          </div>
+          <DateRangePicker placeholder="Выберите период" />
         </div>
-        <DateRangePicker placeholder="Выберите период" />
+        <div class="flex items-center justify-center gap-2 h-[30dvh] w-full">
+          <p class="text-white/60 text-center">CHART SOME</p>
+        </div>
       </div>
-      <div class="flex items-center justify-center gap-2 h-[30dvh] w-full">
-        <p class="text-white/60 text-center">CHART SOME</p>
+      <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
+        <p class="text-white/60">Live chart сделок</p>
+        <div class="mt-3.75 mb-5 flex items-center justify-center">
+          <MonthProgressRing :percent="30" :stroke-width="30" />
+        </div>
+        <div class="space-y-5">
+          <div class="flex items-center justify-between text-sm">
+            <p class="text-white/60">Сделок за сегодня</p>
+            <p class="">30k</p>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <p class="text-white/60">Процент за сегодня</p>
+            <p class="">30k</p>
+          </div>
+        </div>
       </div>
+      <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5 space-y-6.25">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1">
+            <img :src="usdt" alt="USDT" class="w-6.25 h-6.25">
+            <p class="text-lg">USDT</p>
+          </div>
+          <BadgeStats :sum="24.6" />
+        </div>
+        <div class="space-y-px text-sm text-[#9A999A]">
+          <p class="font-semibold">Баланс:</p>
+          <p class="text-white text-lg">0.0000000123 USDT</p>
+          <p>0.2 USD</p>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <Button size="sm" class="text-xs h-7.5 leading-7 font-medium w-full">+ Пополнить</Button>
+          <Button variant="outline" size="sm" class="text-xs h-7.5 leading-7 font-medium w-full">- Вывести</Button>
+        </div>
+        <div class="h-px w-full bg-[#E1E6EF]/10"/>
+        <div>
+          <p class="text-lg font-medium">150 USDT</p>
+          <p class="text-sm text-[#9A999A]">Сумма пополнения</p>
+        </div>
+        <div>
+          <p class="text-lg font-medium text-[#99E39E]">150 USDT</p>
+          <p class="text-sm text-[#9A999A]">Заработано трейдингом</p>
+        </div>
+        <div>
+          <p class="text-lg font-medium text-[#01C3FD]">150 USDT</p>
+          <p class="text-sm text-[#9A999A]">Сумма выводов</p>
+        </div>
+      </div>
+      <div class="col-span-1 md:col-span-2 xl:col-span-3 w-full overflow-hidden bg-[#0E1212]/85 border border-white/10 rounded-xl p-0">
+        <DataTable :columns="columns" :data="tableData" :page-size="5" />
+      </div>  
     </div>
-    <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
-      <p class="text-white/60">Live chart сделок</p>
-      <div class="mt-3.75 mb-5 flex items-center justify-center">
-        <MonthProgressRing :percent="30" :stroke-width="30" />
-      </div>
-      <div class="space-y-5">
-        <div class="flex items-center justify-between text-sm">
-          <p class="text-white/60">Сделок за сегодня</p>
-          <p class="">30k</p>
-        </div>
-        <div class="flex items-center justify-between text-sm">
-          <p class="text-white/60">Процент за сегодня</p>
-          <p class="">30k</p>
-        </div>
-      </div>
-    </div>
-    <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5 space-y-6.25">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-1">
-          <img :src="usdt" alt="USDT" class="w-6.25 h-6.25">
-          <p class="text-lg">USDT</p>
-        </div>
-        <BadgeStats :sum="24.6" />
-      </div>
-      <div class="space-y-px text-sm text-[#9A999A]">
-        <p class="font-semibold">Баланс:</p>
-        <p class="text-white text-lg">0.0000000123 USDT</p>
-        <p>0.2 USD</p>
-      </div>
-      <div class="flex items-center gap-2.5">
-        <Button size="sm" class="text-xs h-7.5 leading-7 font-medium w-full">+ Пополнить</Button>
-        <Button variant="outline" size="sm" class="text-xs h-7.5 leading-7 font-medium w-full">- Вывести</Button>
-      </div>
-      <div class="h-px w-full bg-[#E1E6EF]/10"/>
-      <div>
-        <p class="text-lg font-medium">150 USDT</p>
-        <p class="text-sm text-[#9A999A]">Сумма пополнения</p>
-      </div>
-      <div>
-        <p class="text-lg font-medium text-[#99E39E]">150 USDT</p>
-        <p class="text-sm text-[#9A999A]">Заработано трейдингом</p>
-      </div>
-      <div>
-        <p class="text-lg font-medium text-[#01C3FD]">150 USDT</p>
-        <p class="text-sm text-[#9A999A]">Сумма выводов</p>
-      </div>
-    </div>
-  </div>
-  <div class="grid grid-cols-1 gap-5">
-
-    <div class="col-span-1 w-full overflow-hidden bg-[#0E1212]/85 border border-white/10 rounded-xl p-0">
-      <DataTable :columns="columns" :data="tableData" :page-size="5" />
-    </div>  
-  </div>
   </div>
 
 </template>
