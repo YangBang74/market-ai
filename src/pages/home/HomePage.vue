@@ -79,9 +79,9 @@ const columns: Column<TradeData>[] = [
 <template>
   <div class="space-y-5">
         
-  <div class="grid md:grid-cols-6 grid-cols-1 gap-5">
+  <div class="grid md:grid-cols-12 grid-cols-1 gap-5">
     <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
-      <div class="flex md:items-center justify-between md:flex-row flex-col gap-2 items-start">
+      <div class="flex xl:items-center items-start justify-between xl:flex-row flex-col gap-2">
         <div class="flex items-center gap-1.5">
           <p class="text-2xl font-semibold text-white">
             $240.8K
@@ -94,7 +94,7 @@ const columns: Column<TradeData>[] = [
         <p class="text-white/60 text-center">CHART SOME</p>
       </div>
     </div>
-    <div class="md:col-span-2 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
+    <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
       <p class="text-white/60">Live chart сделок</p>
       <div class="mt-3.75 mb-5 flex items-center justify-center">
         <MonthProgressRing :percent="30" :stroke-width="30" />
@@ -110,9 +110,7 @@ const columns: Column<TradeData>[] = [
         </div>
       </div>
     </div>
-  </div>
-  <div class="grid md:grid-cols-6 grid-cols-1 gap-5">
-    <div class="md:col-span-2 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5 space-y-6.25">
+    <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5 space-y-6.25">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-1">
           <img :src="usdt" alt="USDT" class="w-6.25 h-6.25">
@@ -143,7 +141,10 @@ const columns: Column<TradeData>[] = [
         <p class="text-sm text-[#9A999A]">Сумма выводов</p>
       </div>
     </div>
-    <div class="md:col-span-4 col-span-1 w-full bg-[#0E1212]/85 border border-white/10 rounded-xl p-6.5">
+  </div>
+  <div class="grid grid-cols-1 gap-5">
+
+    <div class="col-span-1 w-full overflow-hidden bg-[#0E1212]/85 border border-white/10 rounded-xl p-0">
       <DataTable :columns="columns" :data="tableData" :page-size="5" />
     </div>  
   </div>

@@ -193,7 +193,7 @@ const endItem = computed(() => Math.min(currentPage.value * props.pageSize, sort
     </div>
 
     <!-- Pagination -->
-    <div class="flex items-center justify-between mt-4 px-1">
+    <div class="flex items-center justify-between mt-2 px-4 pb-4">
       <div class="text-sm text-white/60">
         {{ startItem }}-{{ endItem }} of {{ sortedData.length }} assets
       </div>
